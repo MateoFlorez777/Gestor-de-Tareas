@@ -2,22 +2,31 @@ import React from 'react';
 
 const TaskFilter = ({ filter, setFilter }) => {
   return (
-    <div className="mb-4 flex justify-center">
+    <div className="flex justify-center gap-4">
       <button 
         onClick={() => setFilter('all')} 
-        className={`mr-2 px-4 py-2 rounded ${filter === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+        className={`px-6 py-2 rounded-full font-medium text-sm transition-all duration-300
+                  ${filter === 'all' 
+                    ? 'bg-indigo-600 text-white shadow-md' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
       >
         Todas
       </button>
       <button 
         onClick={() => setFilter('active')} 
-        className={`mr-2 px-4 py-2 rounded ${filter === 'active' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+        className={`px-6 py-2 rounded-full font-medium text-sm transition-all duration-300
+                  ${filter === 'active' 
+                    ? 'bg-indigo-600 text-white shadow-md' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
       >
         Activas
       </button>
       <button 
         onClick={() => setFilter('completed')} 
-        className={`px-4 py-2 rounded ${filter === 'completed' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+        className={`px-6 py-2 rounded-full font-medium text-sm transition-all duration-300
+                  ${filter === 'completed' 
+                    ? 'bg-indigo-600 text-white shadow-md' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
       >
         Completadas
       </button>

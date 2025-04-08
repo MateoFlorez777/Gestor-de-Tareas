@@ -8,8 +8,22 @@ const TaskList = ({ tasks, filter, setTasks, setEditingTask }) => {
     return true;
   });
 
+  if (filteredTasks.length === 0) {
+    return (
+      <div className="text-center py-10 bg-gray-50 rounded-lg">
+        <p className="text-gray-500 text-lg">
+          {filter === 'all' 
+            ? 'No hay tareas. ¡Añade una nueva!' 
+            : filter === 'active' 
+              ? 'No hay tareas activas.' 
+              : 'No hay tareas completadas.'}
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <ul className="space-y-2">
+    <ul className="space-y-4">
       {filteredTasks.map(task => (
         <TaskItem 
           key={task.id} 

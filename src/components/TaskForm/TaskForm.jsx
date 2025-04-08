@@ -31,24 +31,50 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Título de la tarea"
-        className="border border-gray-300 rounded p-2 w-full mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <textarea
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Descripción de la tarea"
-        className="border border-gray-300 rounded p-2 w-full mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <button type="submit" className="bg-blue-500 text-white rounded p-2 w-full hover:bg-blue-600 transition duration-200">
-        {editingTask ? 'Actualizar Tarea' : 'Agregar Tarea'}
-      </button>
-    </form>
+    <div className="bg-white rounded-lg shadow-md p-6 border border-gray-100">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        {editingTask ? 'Editar Tarea' : 'Nueva Tarea'}
+      </h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">Título</label>
+          <input
+            id="title"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="¿Qué necesitas hacer?"
+            className="border border-gray-300 rounded-lg p-3 w-full 
+                     text-gray-700 focus:outline-none focus:ring-2 
+                     focus:ring-indigo-500 focus:border-transparent
+                     transition duration-200"
+          />
+        </div>
+        <div>
+          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+          <textarea
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Añade detalles adicionales..."
+            className="border border-gray-300 rounded-lg p-3 w-full h-24
+                     text-gray-700 focus:outline-none focus:ring-2 
+                     focus:ring-indigo-500 focus:border-transparent
+                     transition duration-200 resize-none"
+          />
+        </div>
+        <button 
+          type="submit" 
+          className={`w-full py-3 px-4 rounded-lg font-medium 
+                    text-white transition duration-300 ease-in-out 
+                    ${editingTask 
+                      ? 'bg-indigo-600 hover:bg-indigo-700' 
+                      : 'bg-blue-600 hover:bg-blue-700'}`}
+        >
+          {editingTask ? 'Actualizar Tarea' : 'Agregar Tarea'}
+        </button>
+      </form>
+    </div>
   );
 };
 
